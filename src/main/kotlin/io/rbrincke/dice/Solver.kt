@@ -1,41 +1,54 @@
 package io.rbrincke.dice
 
-class Solver(val faces: List<Int>, val faceCountPerDie: List<Int>) {
+class Solver<S, T : Element<T>>(
+        private val inputSet: List<S>,
+        private val combinationSizes: List<Int>,
+        private val elementCreator: (List<S>) -> T) {
 
     init {
-        check(faceCountPerDie.isNotEmpty())
-        check(faceCountPerDie.all { it > 0 }) { "Number of faces for any given die must be strictly positive." }
-        check(faceCountPerDie.sum() == faces.size) { "Number of die faces does not equal the face count per die." }
-    }
-
-    private fun permutationToDiceSet(permutation: List<Int>): DiceSet {
-        val sink = faceCountPerDie.mapIndexed { index, i -> index to mutableListOf<Int>() }
-                .toMap()
-
-        permutation.mapIndexed { index, i ->
-            sink[i]!!.add(faces[index])
+        check(combinationSizes.isNotEmpty())
+        check(combinationSizes.all { it > 0 }) {
+            "Input set sizes must all be strictly positive."
         }
 
-        val dice = sink.values.map { Die(it) }
+        check(combinationSizes.sum() == inputSet.size) {
+            "Input set element count does not equal the total of combination sizes."
+        }
+    }
 
-        return DiceSet(dice)
+    private fun permutationToElementSet(permutation: List<Int>): Combination<T> {
+        val target = combinationSizes.mapIndexed { index, i -> index to ArrayList<S>(i) }.toMap()
+
+        permutation.mapIndexed { index, i ->
+            target[i]!!.add(inputSet[index])
+        }
+
+        val elements = target.values.map { elementCreator.invoke(it) }
+
+        return Combination(elements)
     }
 
     /**
-     * Find any nontransitive [DiceSet]s.
+     * Find any nontransitive [Combination]s.
      */
-    fun solve(): Collection<DiceSet> {
+    fun solve(): List<Combination<T>> {
+        // Perform permutation on a mask to avoid duplicate groupings due
+        // to group-internal ordering differences.
         val mask = mutableListOf<Int>()
-        faceCountPerDie.forEachIndexed { idx, count ->
+        combinationSizes.forEachIndexed { idx, count ->
             repeat(count) { mask.add(idx) }
         }
 
-        check(mask.size == faces.size)
+        check(mask.size == inputSet.size)
 
-        return MultisetPermutationIterator(mask)
+        // Always assign the first item to slot 0 to prevent equal solutions
+        // with the positions rotated.
+        return MultisetPermutationIterator(mask.drop(1))
                 .asSequence()
-                .map(::permutationToDiceSet)
+                .map { listOf(0) + it }
+                .map(::permutationToElementSet)
                 .filter { it.isNontransitive() }
                 .toList()
     }
+
 }
