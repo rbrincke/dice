@@ -11,6 +11,6 @@ class SolverTest {
         val solver = Solver(faces, listOf(3, 3, 3)) { Die(it) }
 
         val solutions = solver.solve()
-        assertEquals(15, solutions.size)
+        assertEquals(5, solutions.size)
     }
 }
