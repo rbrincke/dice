@@ -20,6 +20,6 @@ fun main(args: Array<String>) {
             .joinToString(System.lineSeparator()) {
                 it.prettyPrint()
             }
-    
+
     println(print)
 }
