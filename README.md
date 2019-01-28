@@ -6,7 +6,7 @@ On the table are 3 dice with 6 sides each, and labels of the numbers 1 through 1
 
 In each of the ten rounds that follow, each player will cast their die. The player with the highest roll wins the round. The player who wins most rounds wins the game.
 
-Should Bob be player X or player Y?
+Should Bob choose to be player X or player Y?
 
 ## Solution
 
