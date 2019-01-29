@@ -54,7 +54,8 @@ class Combination<T : Element<T>>(val elements: List<T>) {
 interface Element<E> {
 
     /**
-     * Probability that this element beats the other element [E].
+     * Probability that this element beats the other element [E]. If draws are possible,
+     * they are assumed to be resolved by a coin toss.
      */
     fun beats(other: E): Double
 
