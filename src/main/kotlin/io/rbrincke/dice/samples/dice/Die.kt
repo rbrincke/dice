@@ -6,7 +6,8 @@ data class Die(val faces: Collection<Int>) : Element<Die> {
 
     /**
      * Returns the probability that a cast of this die results in a higher
-     * face value than a cast of the [other] die.
+     * face value than a cast of the [other] die. Draws are assumed to be
+     * resolved by a coin toss.
      */
     override fun beats(other: Die): Double {
         val count = faces.map { x ->
