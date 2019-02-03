@@ -51,7 +51,7 @@ class Combination<T : Element<T>>(val elements: List<T>) {
 
 }
 
-interface Element<E> {
+interface Element<in E> {
 
     /**
      * Probability that this element beats the other element [E]. If draws are possible,
