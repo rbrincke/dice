@@ -2,7 +2,7 @@
 
 Alice proposes a game to Bob.
 
-On the table are 3 dice with 6 sides each, and labels of the numbers 1 through 18. Player X gets to arrange the labels on the dice, after which player Y gets the first pick.
+On the table are 3 dice with 6 sides each, and 18 sticky labels with the numbers 1 through 18. Player X gets to configure the dice by sticking the labels on the die faces, though no face may be left unlabeled. Player Y then gets the first pick.
 
 In each of the ten rounds that follow, each player will cast their die. The player with the highest roll wins the round. The player who wins most rounds wins the game.
 
