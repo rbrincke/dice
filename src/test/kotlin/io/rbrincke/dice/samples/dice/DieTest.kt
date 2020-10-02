@@ -1,6 +1,5 @@
 package io.rbrincke.dice.samples.dice
 
-import io.rbrincke.dice.samples.dice.Die
 import org.junit.jupiter.api.Test
 import kotlin.test.assertEquals
 

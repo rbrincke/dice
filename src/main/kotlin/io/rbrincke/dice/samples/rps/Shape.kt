@@ -1,6 +1,6 @@
 package io.rbrincke.dice.samples.rps
 
-import io.rbrincke.dice.Element
+import io.rbrincke.dice.core.Element
 
 sealed class Shape : Element<Shape>
 

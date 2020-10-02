@@ -1,4 +1,4 @@
-package io.rbrincke.dice
+package io.rbrincke.dice.core
 
 import io.rbrincke.dice.samples.dice.Die
 import org.junit.jupiter.api.Test
@@ -17,8 +17,8 @@ class CombinationTest {
         val diceSet = Combination(listOf(a, b, c))
         val actualDominance = diceSet.dominance()
 
-        assertTrue(diceSet.isNontransitive())
+        assertTrue(diceSet.isNonTransitive())
         assertEquals(expectedDominance, actualDominance)
-        assertEquals(expectedDominance.min(), diceSet.leastDominance())
+        assertEquals(expectedDominance.minOrNull(), diceSet.leastDominance())
     }
 }

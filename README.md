@@ -20,7 +20,7 @@ For dice we say A beats B if A results in a higher roll than B more than half th
 
 ### Dice arrangements
 
-It comes as a surprise to many that a nontransitive configuration is not just possible, but 10,705 such arrangements exist. To enumerate all solutions, run `ApplicationDice.kt` in the `dice` package. Twenty solutions are presented below.
+It comes as a surprise to many that a nontransitive configuration is not just possible, but 10,705 such arrangements exist. To enumerate all solutions, run `ApplicationDice.kt` in the `samples.dice` package. Twenty solutions are presented below.
 
 | #  | A  | B  | C  | p(A) > p(B) | p(B) > p(C) | p(C) > p(A) |
 |---|---|---|---|---|---|---|

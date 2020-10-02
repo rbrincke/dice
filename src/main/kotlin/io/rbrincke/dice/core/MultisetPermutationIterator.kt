@@ -1,4 +1,4 @@
-package io.rbrincke.dice
+package io.rbrincke.dice.core
 
 /**
  * Multiset permutation iterator. Not thread safe.
@@ -7,7 +7,6 @@ package io.rbrincke.dice
  * of Variables by Prefix Shifts."*, Aaron Williams, 2009.
  */
 class MultisetPermutationIterator<E : Comparable<E>>(input: Collection<E>) : Iterator<List<E>> {
-
     private val nodes: List<Node<E>>
 
     private var head: Node<E>
@@ -17,7 +16,6 @@ class MultisetPermutationIterator<E : Comparable<E>>(input: Collection<E>) : Ite
     private var pristine = true
 
     init {
-        checkNotNull(input)
         check(input.isNotEmpty())
 
         nodes = initializeNodeList(input)
@@ -99,7 +97,6 @@ class MultisetPermutationIterator<E : Comparable<E>>(input: Collection<E>) : Ite
 
         return values
     }
-
 }
 
 private class Node<E : Comparable<E>>(val value: E) {

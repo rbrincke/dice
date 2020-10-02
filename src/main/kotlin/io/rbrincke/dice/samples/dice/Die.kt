@@ -1,9 +1,8 @@
 package io.rbrincke.dice.samples.dice
 
-import io.rbrincke.dice.Element
+import io.rbrincke.dice.core.Element
 
-data class Die(val faces: Collection<Int>) : Element<Die> {
-
+data class Die(private val faces: Collection<Int>) : Element<Die> {
     /**
      * Returns the probability that a cast of this die results in a higher
      * face value than a cast of the [other] die. Draws are assumed to be
@@ -22,5 +21,4 @@ data class Die(val faces: Collection<Int>) : Element<Die> {
         x == y -> 0.5
         else -> 0.0
     }
-
 }
