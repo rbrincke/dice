@@ -1,13 +1,10 @@
 package io.rbrincke.dice.samples.rps
 
 import io.rbrincke.dice.core.Solver
+import io.rbrincke.dice.samples.printResults
 
 fun main() {
-    val solutions = rockPaperScissors()
-
-    // Only one solution:
-    val print = solutions.joinToString(System.lineSeparator()) { it.prettyPrint() }
-    println(print)
+    rockPaperScissors().printResults(1)
 }
 
 fun rockPaperScissors() = run {

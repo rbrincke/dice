@@ -1,23 +1,10 @@
 package io.rbrincke.dice.samples.dice
 
 import io.rbrincke.dice.core.Solver
+import io.rbrincke.dice.samples.printResults
 
 fun main() {
-    val solutions = dice()
-
-    println("${solutions.size} solutions")
-
-    // Print the first 20 solutions, sorted by their strength.
-    val print = solutions
-        .sortedWith(
-            compareBy({ -it.leastDominance() }, { -it.dominance().maxOrNull()!! })
-        )
-        .subList(0, 20)
-        .joinToString(System.lineSeparator()) {
-            it.prettyPrint()
-        }
-
-    println(print)
+    dice().printResults(20)
 }
 
 fun dice() = run {
